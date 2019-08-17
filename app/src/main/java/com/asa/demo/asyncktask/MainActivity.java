@@ -40,9 +40,11 @@ public class MainActivity extends AppCompatActivity {
     };
 
     @Override
-    protected void onStop() {
-        super.onStop ();
-        Log.d("ASYNCTASK", "OnStop called");
-        task.cancel ( Boolean.TRUE );
+    protected void onDestroy() {
+        super.onDestroy ();
+        if(task != null){
+            Log.d("TASK", "OnDestroy called");
+            task.cancel ( Boolean.TRUE );
+        }
     }
 }
